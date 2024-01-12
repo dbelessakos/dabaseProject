@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+    <h1>{{customer_name}}</h1>
+<form action="/purchAuth" method="POST">
+	
+    <input type="text" name = "email" placeholder="email" required/> </br>
+	<input type="text" name = "customer_address" placeholder="address" required/> </br>
+	<input type="text" name = "airline_name" placeholder="airline" required/></br>
+	<input type="text" name = "flight_number" placeholder="flight number" required/> </br>
+	<input type="text" name = "sold_price" placeholder="Price" required/> </br>
+	<input type="text" name = "payment_information" placeholder="payment info" required/> </br>
+	<input type="text" name = "purchase_time" placeholder="current time" required/> </br>
+	<input type="text" name = "purchase_date" placeholder="current date" required/> </br>
+	<input type="text" name = "ticket_id" placeholder="4 random numbers" required/> </br>
+	<input type="submit" value = "Buy" />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+<a href="/purchase_ticket">Go back</a>
+</body>
+</html>

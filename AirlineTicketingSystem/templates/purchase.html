@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ </head>   
+ <body>
+    <h1>{{customer_name}}</h1>
+    <a href=/purch>Buy a Ticket</a>
+   
+    <form action="/purchase_ticket" method="POST">
+        
+        
+    <style type ="text/css">
+		table,th,td{
+			border:1px solid black;
+		}
+	</style>
+	<table>
+		<th>Flight Number</th>
+		<th>Airline</th>
+		<th>Departure Airport</th>
+		<th>Departure Time</th>
+		<th>Departure Date</th>
+		<th>Arrival Airport</th>
+		<th>Arrival Time</th>
+		<th>Arrival Date</th>
+		<th>Base Price</th>
+		<th>Flight ID</th>
+		<th>Status</th>
+	{%for line in flight_info %}
+	 <tr>
+		<td>{{line.flight_number}}</td>
+		<td>{{line.airline}}</td>
+		<td>{{line.departure_airport}}</td>
+		<td>{{line.departure_time}}</td>
+		<td>{{line.departure_date}}</td>
+		<td>{{line.arrival_airport}}</td>
+		<td>{{line.arrival_time}}</td>
+		<td>{{line.arrival_date}}</td>
+		<td>{{line.base_price}}</td>
+		<td>{{line.flight_id}}</td>
+		<td>{{line.status}}</td>
+	 </tr>
+	 {% endfor %}
+	</table>
+
+    
+
+    </form>
+ <a href="/home">Go back</a> 
+
+
+ </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+{% if not message %}
+	<a href="/login">Login</a>
+	<a href="/register">Customer Register</a>
+	<a href="/staff_register">Staff Register</a>
+
+<form action="/flightSearch" method="POST">
+	<h1>Search for a Flight</h1>
+	<input type="text" name = "source_airport" placeholder="Departure Airport" required/> </br>
+	<input type="text" name = "destination_airport" placeholder="Destination Airport" required/> </br>
+	<input type="text" name = "departure_date" placeholder="Departure Date" required/> </br>
+	<input type="submit" value = Search />
+
+	<style type ="text/css">
+		table,th,td{
+			border:1px solid black;
+		}
+	</style>
+	<table>
+		<th>Flight Number</th>
+		<th>Airline</th>
+		<th>Departure Airport</th>
+		<th>Departure Time</th>
+		<th>Departure Date</th>
+		<th>Arrival Airport</th>
+		<th>Arrival Time</th>
+		<th>Arrival Date</th>
+		<th>Base Price</th>
+		<th>Flight ID</th>
+		<th>Status</th>
+	{%for line in flight_info %}
+	 <tr>
+		<td>{{line.flight_number}}</td>
+		<td>{{line.airline}}</td>
+		<td>{{line.departure_airport}}</td>
+		<td>{{line.departure_time}}</td>
+		<td>{{line.departure_date}}</td>
+		<td>{{line.arrival_airport}}</td>
+		<td>{{line.arrival_time}}</td>
+		<td>{{line.arrival_date}}</td>
+		<td>{{line.base_price}}</td>
+		<td>{{line.flight_id}}</td>
+		<td>{{line.status}}</td>
+	 </tr>
+	 {% endfor %}
+	</table>
+</form>
+
+<form action="/flightStatus" method="POST">
+	<h1>Check Flight Status</h1>
+	<input type="text" name = "airline" placeholder="Airline" required/> </br>
+	<input type="text" name = "flight_number" placeholder="Flight Number" required/> </br>
+	<input type="text" name = "departure_date" placeholder="Departure Date" required/> </br>
+	<input type="submit" value = Search />
+
+	<style type ="text/css">
+		table,th,td{
+			border:1px solid black;
+		}
+	</style>
+	<table>
+		<th>Flight Number</th>
+		<th>Airline</th>
+		<th>Departure Date</th>
+		<th>Arrival Date</th>
+		<th>Status</th>
+	{%for line in flight_info %}
+	 <tr>
+		<td>{{line.flight_number}}</td>
+		<td>{{line.airline}}</td>
+		<td>{{line.departure_date}}</td>
+		<td>{{line.arrival_date}}</td>
+		<td>{{line.status}}</td>
+	 </tr>
+	 {% endfor %}
+	</table>
+</form>
+
+{% endif %}
+
+{% if message %}
+	<a href="/logout">Logout</a>
+	<a href="/remove_account">Remove Account</a>
+	<p class="message">You are logged in {{message}}. You have {{num}} follower(s)</p> </br>
+	<a href="/tweets">View your tweets</a> </br>
+	<a href="/find_people">Find people to follow</a> </br>
+	<a href="/unfollow">Unfollow someone</a> </br>
+	<a href="/view_followed">View people you have followed</a> </br>
+	</br>
+
+        <h4>15 most recent tweets from you and your followers </h4> </br>
+
+	{% for line in tweets%}
+	        <p>{{line}}</p>
+	        <hr>
+	{% endfor %}
+	{% endif %}
+</body>
+
+</html>

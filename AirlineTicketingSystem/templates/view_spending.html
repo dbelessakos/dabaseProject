@@ -1,0 +1,23 @@
+<html>
+<head>
+    <h1>View my Spending</h1>
+    <h1>{{customer_name}}</h1>
+    <body>
+        <style type ="text/css">
+            table,th,td{
+                border:1px solid black;
+            }
+        </style>
+        <table>
+            <th>Total Spending</th>
+            {%for line in spending %}
+            <tr>
+                <td>{{line.base_price}}</td>
+                {% endfor %}
+            </tr>
+
+        </table>
+    </body>
+    <a href="/home">Go back</a> 
+</head>
+</html>
